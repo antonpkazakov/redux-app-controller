@@ -1,5 +1,5 @@
 {
-  "name": "redux-controller",
+  "name": "redux-app-controller",
   "version": "1.0.0",
   "description": "A JavaScript library based on React+Redux combination that allows you to make React-powered SPA based on controllers rather than separate action creators, reducers and action handlers.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antonpkazakov/redux-controller.git"
+    "url": "git+https://github.com/antonpkazakov/redux-app-controller.git"
   },
   "keywords": [
     "react",
@@ -18,9 +18,9 @@
   "author": "Anton Kazakov <anton.kazakov@gmail.com> (http://www.anton-kazakov.ru)",
   "license": "GNU",
   "bugs": {
-    "url": "https://github.com/antonpkazakov/redux-controller/issues"
+    "url": "https://github.com/antonpkazakov/redux-app-controller/issues"
   },
-  "homepage": "https://github.com/antonpkazakov/redux-controller#readme",
+  "homepage": "https://github.com/antonpkazakov/redux-app-controller#readme",
   "dependencies": {
     "lodash": "^4.16.4",
     "react": ">=0.14.8",
