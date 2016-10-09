@@ -22,7 +22,7 @@ export class Router extends ParentRouter {
 	}	
 }
 
-export default class ReduxControllerRouter {
+export default class ReduxAppControllerRouter {
 	constructor() {
 		//super();
 
@@ -44,7 +44,7 @@ export default class ReduxControllerRouter {
 	/**
 	 * Sets the router's history type.
 	 * @param history_type History object — browserHistory|hashHistory
-	 * @returns {ReduxControllerRouter}
+	 * @returns {ReduxAppControllerRouter}
 	 */
 	setHistoryType(history_type) {
 		this.history_type = history_type;

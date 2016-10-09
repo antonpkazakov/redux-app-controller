@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReduxController} from './ReduxController';
+import {ReduxAppController} from './ReduxAppController';
 import {Utils} from './Utils';
 
 export class AbstractComponent extends React.Component {
@@ -38,10 +38,10 @@ export class AbstractComponent extends React.Component {
 
 	/**
 	 * Returns the controller passed to this component in the "controller" property.
-	 * @returns {ReduxController}
+	 * @returns {ReduxAppController}
 	 */
 	getController() {
-		if (this.props.controller instanceof ReduxController) {
+		if (this.props.controller instanceof ReduxAppController) {
 			return this.props.controller;
 		}
 

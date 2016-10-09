@@ -1,27 +1,27 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import _ from 'lodash';
-import {ReduxControllerComponent} from './ReduxControllerComponent';
-import {ReduxControllerRouter} from './ReduxControllerRouter';
+import {ReduxAppControllerComponent} from './ReduxAppControllerComponent';
+import {ReduxAppControllerRouter} from './ReduxAppControllerRouter';
 import {Utils} from './Utils';
 
 const THROW_METHOD_PREFIX = 'throw';
 const HANDLE_METHOD_PREFIX = 'handle';
 const REDUCE_METHOD_PREFIX = 'reduceOn';
 
-export default class ReduxController {
+export default class ReduxAppController {
 	constructor() {
 		//super();
 		/**
-		if (new.target === ReduxController) {
-			throw new TypeError("You must not construct ReduxController instances directly.");
+		if (new.target === ReduxAppController) {
+			throw new TypeError("You must not construct ReduxAppController instances directly.");
 		}
 		*/
 		if (this.getStateInitialData === undefined) {
-			Utils.fatalError('ReduxController', "You must override method getStateInitialData() in a child of ReduxController.");
+			Utils.fatalError('ReduxAppController', "You must override method getStateInitialData() in a child of ReduxAppController.");
 		}
 		if (this.render === undefined) {
-			Utils.fatalError('ReduxController', "You must implement method render() in a child of ReduxController.");
+			Utils.fatalError('ReduxAppController', "You must implement method render() in a child of ReduxAppController.");
 		}
 
 		this.store = {};
@@ -116,7 +116,7 @@ export default class ReduxController {
 
 	/**
 	 * Returns the controller component by its key indicated in getControllerComponents() method.
-	 * @returns {ReduxControllerComponent}
+	 * @returns {ReduxAppControllerComponent}
 	 */
 	getControllerComponent(key) {
 		return this.getControllerComponents()[key];
@@ -124,7 +124,7 @@ export default class ReduxController {
 
 	/**
 	 * Returns the app router. If null is returned, it means that routing is disabled in this app.
-	 * @returns ReduxControllerRouter
+	 * @returns ReduxAppControllerRouter
 	 */
 	getRouter() {
 		if (this.router===undefined) {
@@ -133,7 +133,7 @@ export default class ReduxController {
 		return this.router;
 	}
 	/**
-	 * Создаёт и возвращет router приложения. Чтобы инициализировать routing в приложении, надо переопределить и вернуть потомка ReduxControllerRouter.
+	 * Создаёт и возвращет router приложения. Чтобы инициализировать routing в приложении, надо переопределить и вернуть потомка ReduxAppControllerRouter.
 	 * @returns Object
 	 */
 	createRouter() {
@@ -237,7 +237,7 @@ export default class ReduxController {
 
 	/**
 	 * Returns the root reducer for the app store.
-	 * @returns {function(this:ReduxController)}
+	 * @returns {function(this:ReduxAppController)}
 	 * @private
 	 */
 	_getRootReducer() {
@@ -264,7 +264,7 @@ export default class ReduxController {
 	 * Return the closure function (data_for_action) { // do things }
 	 * @param action_type Action type.
 	 * @param handle_method_name Correspondent action handler method name.
-	 * @returns {function(this:ReduxController)}
+	 * @returns {function(this:ReduxAppController)}
 	 * @private
 	 */
 	_createThrowActionMethod(action_type, handle_method_name) {
@@ -285,7 +285,7 @@ export default class ReduxController {
 	 * @param method Method declared in a controller throwSomeActionName.
 	 * @param action_type Action type.
 	 * @param handle_method_name Action handler method name.
-	 * @returns {function(this:ReduxController)}
+	 * @returns {function(this:ReduxAppController)}
 	 * @private
 	 */
 	_processThrowActionMethod(method, action_type, handle_method_name) {
@@ -318,7 +318,7 @@ export default class ReduxController {
 
 	/**
 	 * Attempts to add methods corresponding to a given controller component actions into the controller. If fails, returns false, if succeeds — true.
-	 * @param {ReduxControllerComponent} component
+	 * @param {ReduxAppControllerComponent} component
 	 * @param {string[]} action_types Action types to add methods for.
 	 * @returns {bool}
 	 * @private
@@ -341,7 +341,7 @@ export default class ReduxController {
 				// If a method to be defined is already defined, we should throw an error.
 				if (this[method_name]!==undefined) {
 					let error_message = 'Controller init error! A "'+method_name+'" propagated method has already been initialized!';
-					Utils.error('ReduxController', error_message);
+					Utils.error('ReduxAppController', error_message);
 					return false;
 				}
 
@@ -357,7 +357,7 @@ export default class ReduxController {
 
 	/**
 	 * Attempts to add a controller component into the controller. If fails, returns false, if succeeds, returns a list of action types required by a controller component.
-	 * @param {ReduxControllerComponent} component
+	 * @param {ReduxAppControllerComponent} component
 	 * @returns {bool|string[]}
 	 * @private
 	 */
@@ -370,7 +370,7 @@ export default class ReduxController {
 		// we should throw an error and terminate.
 		if (actions_intersection.length) {
 			let error_message = 'Controller init error! A '+actions_intersection.toString()+' part of actions array '+component_actions.toString()+' intersects with existing actions!';
-			Utils.error('ReduxController', error_message);
+			Utils.error('ReduxAppController', error_message);
 			return false;
 		}
 
@@ -401,7 +401,7 @@ export default class ReduxController {
 		// Iterating controller components.
 		for (let component_key in components) {
 			let component = components[component_key];
-			if (component instanceof ReduxControllerComponent) {
+			if (component instanceof ReduxAppControllerComponent) {
 				let component_required_actions;
 				if (component_required_actions = this._joinControllerComponent(component)) {
 					// Gathering the list of all the action types required by the indicated controller components.
@@ -417,7 +417,7 @@ export default class ReduxController {
 		let missing_actions = _.difference(_.uniq(required_actions), this.getActionTypes());
 		if (missing_actions.length) {
 			let error_message = 'Controller init error! The following required actions have not been initialized: '+missing_actions.toString();
-			Utils.error('ReduxController', error_message);
+			Utils.error('ReduxAppController', error_message);
 		}
 	}
 
@@ -477,7 +477,7 @@ export default class ReduxController {
 	 */
 	_initRouter() {
 		let router = this.getRouter();
-		if (router instanceof ReduxControllerRouter) {
+		if (router instanceof ReduxAppControllerRouter) {
 			router.init();
 		}
 	}

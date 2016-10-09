@@ -1,4 +1,4 @@
-export default class ReduxControllerComponent {
+export default class ReduxAppControllerComponent {
 	constructor() {
 		this.controller = null;
 
@@ -13,8 +13,8 @@ export default class ReduxControllerComponent {
 	}
 	/**
 	 * Sets the parent controller into this controller component.
-	 * @param {ReduxController} controller
-	 * @returns {ReduxControllerComponent}
+	 * @param {ReduxAppController} controller
+	 * @returns {ReduxAppControllerComponent}
 	 */
 	setController(controller) {
 		this.controller = controller;
@@ -22,7 +22,7 @@ export default class ReduxControllerComponent {
 	}
 	/**
 	 * Returns the parent controller.
-	 * @returns {ReduxController}
+	 * @returns {ReduxAppController}
 	 */
 	getController() {
 		return this.controller;
