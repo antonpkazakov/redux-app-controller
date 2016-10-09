@@ -1,12 +1,12 @@
-import ReduxController from './src/ReduxController';
-import ReduxControllerComponent from './src/ReduxControllerComponent';
+import ReduxAppController from './src/ReduxAppController';
+import ReduxAppControllerComponent from './src/ReduxAppControllerComponent';
 import AbstractComponent from './src/AbstractComponent';
-import ReduxControllerRouter from './src/ReduxControllerRouter';
+import ReduxAppControllerRouter from './src/ReduxAppControllerRouter';
 
 export {
-	ReduxController,
-	ReduxControllerComponent,
+	ReduxAppController,
+	ReduxAppControllerComponent,
 	AbstractComponent,
-	ReduxControllerRouter
+	ReduxAppControllerRouter
 };
 
