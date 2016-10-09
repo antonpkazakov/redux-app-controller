@@ -1,8 +1,8 @@
 import React from 'react';
-import {ReduxAppController} from './ReduxAppController';
+import ReduxAppController from './ReduxAppController';
 import {Utils} from './Utils';
 
-export class AbstractComponent extends React.Component {
+export default class AbstractComponent extends React.Component {
 	constructor() {
 		super();
 

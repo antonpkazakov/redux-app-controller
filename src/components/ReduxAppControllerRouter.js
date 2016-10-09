@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router as ParentRouter, Route, Link, IndexRoute, Redirect, IndexRedirect, browserHistory, hashHistory, withRouter } from 'react-router';
-import {Utils} from './Utils';
+import Utils from './Utils';
 
 // Exporting all react-router components to avoid the need to import all these components separately from react-router.
 export { Route, Link, IndexRoute, Redirect, IndexRedirect, browserHistory, hashHistory };
@@ -22,7 +22,7 @@ export class Router extends ParentRouter {
 	}	
 }
 
-export default class ReduxAppControllerRouter {
+export class ReduxAppControllerRouter {
 	constructor() {
 		//super();
 

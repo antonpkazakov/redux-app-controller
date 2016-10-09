@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import _ from 'lodash';
-import {ReduxAppControllerComponent} from './ReduxAppControllerComponent';
+import ReduxAppControllerComponent from './ReduxAppControllerComponent';
 import {ReduxAppControllerRouter} from './ReduxAppControllerRouter';
-import {Utils} from './Utils';
+import Utils from './Utils';
 
 const THROW_METHOD_PREFIX = 'throw';
 const HANDLE_METHOD_PREFIX = 'handle';
