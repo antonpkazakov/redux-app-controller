@@ -410,7 +410,7 @@ export default class State {
 export default class MainController extends ReduxAppController {
 	// ...
 
-	// As out app state is now in a separate class, we need to provide the instance of this class as the initial state
+	// As our app state is now in a separate class, we need to provide the instance of this class as the initial state
 	// and the instance of this class as a basis for state cloning (method createEmptyState()).
 	/**
 	 * @returns {State}
