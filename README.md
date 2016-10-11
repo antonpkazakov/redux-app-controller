@@ -16,8 +16,8 @@ With ReduxAppController you can both easily start building your SPA and easily s
 
 [Scaling. When your SPA gets bigger](#scaling-when-your-spa-gets-bigger)
 
-1. [Dealing with lots of actions \(controller components\)](#dealing-with-lots-of-actions-\(controller-components\))
-2. [Dealing with a complex state structure \(State object\)](#dealing-with-a-complex-state-structure-\(state-object\))
+1. [Dealing with lots of actions \(controller components\)](#1-dealing-with-lots-of-actions-controller-components)
+2. [Dealing with a complex state structure \(State object\)](#2-dealing-with-a-complex-state-structure-state-object)
 
 [App routing](#app-routing)
 
